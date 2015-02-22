@@ -1,7 +1,3 @@
-## Put comments here that give an overall description of what your
-## functions do
-
-## Write a short comment describing this function
 
 # This function gets a matrix as input and stores it
 # returns a list of its internal functions to set and get the data
@@ -19,6 +15,7 @@ makeCacheMatrix <- function(x = matrix()) {
     setinverse <- function(inverse) {i <<- inverse}
     getinverse <- function() {i}
     
+    #(set is a $name type and second set is the variable, same with the rest)
     list(set = set, get = get,
        setinverse = setinverse,
        getinverse = getinverse)
@@ -32,13 +29,14 @@ makeCacheMatrix <- function(x = matrix()) {
 # sets its value to x and returns its value as well
 
 cacheSolve <- function(x, ...) {
-        ## Return a matrix that is the inverse of 'x'
   
     i <- x$getinverse()
+    
     if(!is.null(i)) {
       message("getting cached data")
       return(i)
     }
+    
     data <- x$get()
     i <- solve(data, ...)
     x$setinverse(i)
